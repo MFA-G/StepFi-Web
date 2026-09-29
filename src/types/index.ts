@@ -98,6 +98,15 @@ export interface SubmittedTransaction {
   status: 'pending'
 }
 
+/** Idempotency record stored in localStorage to prevent duplicate submissions */
+export interface IdempotencyRecord {
+  idempotencyKey: string
+  xdrHash: string
+  transactionHash: string
+  type: TransactionType
+  createdAt: string
+}
+
 export interface PoolInfo {
   totalDeposits: number
   totalLiquidity: number
@@ -261,6 +270,12 @@ export interface ContractWasmInfo {
   wasmHash: string | null
   status: 'loading' | 'success' | 'error'
   error?: string
+}
+
+export interface MySummary {
+  shares: number
+  value: number
+  sharePrice: number
 }
 
 export interface VerificationReconciliation {
